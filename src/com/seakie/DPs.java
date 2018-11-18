@@ -4,9 +4,10 @@ public class DPs {
 
 	public static void main(String[] args) {
 		DPDemo demo = new DPDemo();
-		demo.maxSubSum();
-		demo.stepChoice();
-		demo.transCode();
+//		demo.maxSubSum();
+//		demo.stepChoice();
+//		demo.transCode();
+		demo.binarySearchTree();
 	}
 
 }

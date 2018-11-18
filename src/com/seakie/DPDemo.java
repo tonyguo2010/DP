@@ -1,6 +1,10 @@
 package com.seakie;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Scanner;
 
 public class DPDemo {
 	public void maxSubSum() {
@@ -60,7 +64,7 @@ public class DPDemo {
 		return (char) (code + diff);
 	}
 	public void transCode() {
-		String orig = "1201345";
+		String orig = "123421";
 		ArrayList<Integer> record = new ArrayList<>();
 		while (record.size() < orig.length()) record.add(0);
 		
@@ -82,5 +86,45 @@ public class DPDemo {
 		}
 //		System.out.println(record);
 		System.out.println(record.get(orig.length() - 1));
+	}
+
+	public void binarySearchTree() {
+		Scanner scan = new Scanner(System.in);
+		int N = scan.nextInt();
+		HashMap<Integer, Integer> dict = new HashMap<>();
+		dict.put(0, 0);
+		dict.put(1, 1);
+		
+		for (int index = 2; index <= N; index ++) {
+			int key = index;
+			int value = getValueByDict(dict, key);
+			dict.put(key, value);
+//			System.out.println("Get " + value);
+		}
+		
+//		for (Integer nodes : dict.keySet()) {
+//			System.out.println(dict.get(nodes));
+//		}
+		System.out.println(dict.get(N));
+	}
+
+	private int getValueByDict(HashMap<Integer, Integer> dict, int key) {
+		int position = 0;
+		int result = 0;
+		int left = 0;
+		int right = 0;
+		
+		for (position = 1; position <= key; position++) {
+			result ++;
+			left = dict.get(position - 1) - 1; // left side
+			if (left < 0) 
+				left = 0;
+			right = dict.get(key - position) - 1; // the right side
+			if (right < 0)
+				right = 0;
+			result += (left + right);
+		}
+		
+		return result;
 	}
 }
