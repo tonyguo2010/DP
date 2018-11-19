@@ -7,7 +7,8 @@ public class DPs {
 //		demo.maxSubSum();
 //		demo.stepChoice();
 //		demo.transCode();
-		demo.binarySearchTree();
+//		demo.binarySearchTree();
+		demo.minPathInTriangle();
 	}
 
 }

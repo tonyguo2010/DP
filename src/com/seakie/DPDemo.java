@@ -6,6 +6,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
 
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
+
 public class DPDemo {
 	public void maxSubSum() {
 		ArrayList<Integer> list = new ArrayList<Integer>();
@@ -126,5 +128,48 @@ public class DPDemo {
 		}
 		
 		return result;
+	}
+
+	public void minPathInTriangle() {
+		/*
+		[2],
+		[3,4],
+		[6,5,7],
+		[4,1,8,3]
+		 */
+		ArrayList<ArrayList<Integer>> tree = new ArrayList<ArrayList<Integer>>();
+		ArrayList<Integer> line = new ArrayList<Integer>();
+		line.add(2);
+		tree.add((ArrayList<Integer>) line.clone());
+		line.clear();
+		line.add(3); line.add(4);
+		tree.add((ArrayList<Integer>) line.clone());
+		line.clear();
+		line.add(6); line.add(5); line.add(7);
+		tree.add((ArrayList<Integer>) line.clone());
+		line.clear();
+		line.add(4); line.add(1);line.add(8); line.add(3);
+		tree.add((ArrayList<Integer>) line.clone());
+
+//		System.out.println(tree);
+
+		for (int row = tree.size() - 2; row >= 0; row--) {
+//			System.out.println(tree.get(row));
+			ArrayList<Integer> current = tree.get(row);
+			ArrayList<Integer> next = tree.get(row + 1);
+			// reverse from the 2nd last line and upward
+			for (int pos = 0; pos < current.size(); pos++) {
+				int toAdd = 0;  // to pick the bigger one in the closed node
+				if (next.get(pos) > next.get(pos + 1)){
+					toAdd = next.get(pos);
+				} else {
+					toAdd = next.get(pos + 1);
+				}
+				current.set(pos, current.get(pos) + toAdd);
+			}
+		}
+		
+//		System.out.println(tree);
+		System.out.println(tree.get(0).get(0));
 	}
 }
