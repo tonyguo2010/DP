@@ -172,4 +172,26 @@ public class DPDemo {
 //		System.out.println(tree);
 		System.out.println(tree.get(0).get(0));
 	}
+
+	public void findPali() {
+		String orig = "abccbc";
+		for (int end = 1; end <= orig.length(); end++) {
+			for (int start = 0; start < end; start++) {
+//				System.out.println(orig.substring(start, end));
+				String work = orig.substring(start, end);
+				if (isPali(work) == true) {
+					System.out.println(work);
+				}
+			}
+		}
+	}
+
+	private boolean isPali(String work) {
+		for (int index = 0; index <= work.length() / 2; index++) {
+			if (work.charAt(index) != work.charAt(work.length() - 1 - index)) {
+				return false;
+			}
+		}
+		return true;
+	}
 }

@@ -8,7 +8,8 @@ public class DPs {
 //		demo.stepChoice();
 //		demo.transCode();
 //		demo.binarySearchTree();
-		demo.minPathInTriangle();
+//		demo.minPathInTriangle();
+		demo.findPali();
 	}
 
 }
