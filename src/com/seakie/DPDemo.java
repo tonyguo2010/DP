@@ -194,4 +194,44 @@ public class DPDemo {
 		}
 		return true;
 	}
+
+	private boolean stringExist(String work, ArrayList<String> dict) {
+		for (String line : dict) {
+			if (line.contains(work)){
+				return true;
+			}
+		}
+		return false;
+	}
+	public void stringInStrings() {
+		ArrayList<Boolean> record = new ArrayList<Boolean>();
+		String word = "able";
+		while (record.size() <= word.length()) record.add(false);
+		record.set(0, true);
+		ArrayList<String> dict = new ArrayList<String>();
+		dict.add("apple");
+		dict.add("berry");
+		dict.add("peach");
+		
+		for (int index = 0; index < word.length(); index++) {
+			if (record.get(index) == false) {
+				// if it is not a correct cut here, skip
+				continue;
+			}
+			for (int end = index + 1; end <= word.length(); end++) {
+				String cut = word.substring(index, end);
+//				System.out.println(cut);
+				if (stringExist(cut, dict) == true) {
+					record.set(end, true);
+				}
+			}
+		}
+		
+		// just check the final record
+		if (record.get(word.length()) == true) {
+			System.out.println("Good");
+		} else {
+			System.out.println("bad");
+		}
+	}
 }

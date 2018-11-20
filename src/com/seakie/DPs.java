@@ -9,7 +9,8 @@ public class DPs {
 //		demo.transCode();
 //		demo.binarySearchTree();
 //		demo.minPathInTriangle();
-		demo.findPali();
+//		demo.findPali();
+		demo.stringInStrings();
 	}
 
 }
