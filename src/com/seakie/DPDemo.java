@@ -234,4 +234,30 @@ public class DPDemo {
 			System.out.println("bad");
 		}
 	}
+
+	public void stocking() {
+		ArrayList<Integer> prices = new ArrayList<Integer>();
+		prices.add(3);
+		prices.add(1);
+		prices.add(2);
+		prices.add(3);
+		prices.add(9);
+		prices.add(8);
+		int buy = 0;
+		int sell = 0;
+		int max = 0;
+		for (int start = 0; start < prices.size(); start++) {
+			for (int end = start + 1; end < prices.size(); end++) {
+//				System.out.println(prices.get(start) + " " + prices.get(end));
+				buy = prices.get(start);
+				sell = prices.get(end);
+				if (max < sell - buy) {
+					max = sell - buy;
+				}
+			}
+		}
+		
+		System.out.println(max);
+	}
 }
+
