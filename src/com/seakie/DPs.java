@@ -11,7 +11,11 @@ public class DPs {
 //		demo.minPathInTriangle();
 //		demo.findPali();
 //		demo.stringInStrings();
-		demo.stocking();
+//		demo.stocking();
+//		demo.stepChoiceGeneral();
+		
+//		demo.longestPali();
+		demo.splitedWord();
 	}
 
 }

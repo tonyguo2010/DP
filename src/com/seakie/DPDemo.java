@@ -259,5 +259,69 @@ public class DPDemo {
 		
 		System.out.println(max);
 	}
+
+	public void stepChoiceGeneral() {
+		int steps = 10;
+		int width = 2;
+		int protect = 5;
+		
+		ArrayList<Integer> choice = new ArrayList<Integer>();
+		while(choice.size() < steps + protect) choice.add(0);
+		choice.set(0, 1);
+		for (int i = 0; i < steps; i++) {
+//			for (int j = i + 1; j <= i + width; j++) {
+//				choice.set( j, choice.get(i) + choice.get( j));
+//			}
+			choice.set(i + 1, choice.get(i) + choice.get(i + 1));
+			choice.set(i + 2, choice.get(i) + choice.get(i + 2));
+		}
+		
+		System.out.println(choice);
+	}
+
+	public void longestPali() {
+		String str = "abcdcbaf";
+		int start = 0, end = 0;
+		String sub;
+		String max = "";
+		
+		for (start = 0; start <= str.length(); start++) {
+			for (end = start + 1; end <= str.length(); end++){
+//				System.out.println(str.substring(start, end));
+				sub = str.substring(start, end);
+				if (isPali(sub)) {
+					if (sub.length() > max.length()){
+						max = sub;
+					}
+				}
+			}
+		}
+		
+		System.out.println(max);
+	}
+
+	public void splitedWord() {
+		String base = "helloworldhello!";
+		String word1 = "hello";
+		String word2 = "world";
+		
+		ArrayList<Boolean> record = new ArrayList<Boolean>();
+		while (record.size() < base.length() + 1) record.add(false);
+		
+		record.set(0, true);
+		for (int start = 0; start <= base.length(); start++){
+			for (int end = start + 1; end <= base.length(); end++) {
+				if (record.get(start) == false)
+					continue;
+				String sub = base.substring(start, end);
+				if ((sub.equals(word1) == true)
+					|| (sub.equals(word2) == true) ){
+					record.set(end, true);
+				}
+			}
+		}
+		
+		System.out.println(record.get(base.length()));
+	}
 }
 
