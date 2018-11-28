@@ -301,7 +301,7 @@ public class DPDemo {
 	}
 
 	public void splitedWord() {
-		String base = "helloworldhello!";
+		String base = "helloworldhello";
 		String word1 = "hello";
 		String word2 = "world";
 		
@@ -322,6 +322,63 @@ public class DPDemo {
 		}
 		
 		System.out.println(record.get(base.length()));
+	}
+
+	public void bag01() {
+		ArrayList<Integer> size = new ArrayList<>();
+		ArrayList<Integer> money = new ArrayList<>();
+		ArrayList<Integer> result = new ArrayList<>();
+		int limit = 10;
+		while (result.size() < limit + 1) result.add(0);
+
+		size.add(5);
+		size.add(2);
+		size.add(8);
+		size.add(3);
+		
+		money.add(7);
+		money.add(3);
+		money.add(10);
+		money.add(4);
+
+		for (int item = 0; item < 4; item++) {
+			for (int pos = limit; pos >= size.get(item); pos--) {
+				int current = result.get(pos);
+				int willBe = result.get(pos - size.get(item)) + money.get(item);
+				result.set(pos, Math.max(current, willBe));
+			}
+			System.out.println(result);
+		}
+		
+//		System.out.println(result);
+	}
+
+	public void bagAll() {
+		ArrayList<Integer> size = new ArrayList<>();
+		ArrayList<Integer> money = new ArrayList<>();
+		ArrayList<Integer> result = new ArrayList<>();
+		int limit = 10;
+		while (result.size() < limit + 1) result.add(0);
+
+		size.add(5);
+		size.add(2);
+		size.add(8);
+		size.add(3);
+		
+		money.add(7);
+		money.add(3);
+		money.add(10);
+		money.add(4);
+
+		for (int item = 0; item < 4; item++) {
+			for (int pos = size.get(item); pos <= limit; pos++) {
+				int current = result.get(pos);
+				int willBe = result.get(pos - size.get(item)) + money.get(item);
+				result.set(pos, Math.max(current, willBe));
+			}
+			System.out.println(result);
+		}
+		
 	}
 }
 

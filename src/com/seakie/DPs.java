@@ -15,7 +15,9 @@ public class DPs {
 //		demo.stepChoiceGeneral();
 		
 //		demo.longestPali();
-		demo.splitedWord();
+//		demo.splitedWord();
+//		demo.bag01();
+		demo.bagAll();
 	}
 
 }
